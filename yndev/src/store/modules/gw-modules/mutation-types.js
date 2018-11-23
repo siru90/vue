@@ -1,0 +1,17 @@
+export const CART_NUM_CHANGE = "CART_NUM_CHANGE";
+export const CART_ARRAY_CHANGE = "CART_ARRAY_CHANGE";
+export const SERVICE_ARRAY = "SERVICE_ARRAY";
+export const TEMP_GOODS = "TEMP_GOODS";
+export const DETAILS_GOODS_NUM = "DETAILS_GOODS_NUM";
+export const TOTAL_PRICE = "TOTAL_PRICE";
+export const FP = "FP";
+export const ORDER_GOODS = "ORDER_GOODS";
+export const CHOOSE_PROVIDER = "CHOOSE_PROVIDER";
+export const GOODS_WAY = "GOODS_WAY";
+export const GOODS_YH = "GOODS_YH";
+export const ORDER_YH_CHOOSE = "ORDER_YH_CHOOSE";
+export const PS_STATE = "PS_STATE";
+export const PS_DATE = "PS_DATE";
+export const CHOOSE_ADDRESS_ABLE = "CHOOSE_ADDRESS_ABLE";
+export const YAJIN_VAL = "YAJIN_VAL";
+export const COMCART_ARRAY_CHANGE="COMCART_ARRAY_CHANGE";

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"> -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no" />
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>翌能商城</title>
+    <link rel="stylesheet" href="static/css/aui-slide.css" />
+    <link rel="stylesheet" href="static/css/fonts.css" />
+    <link rel="stylesheet" href="static/css/fonts/iconfont.css" />
+    <link rel="stylesheet" href="static/css/aui.css" />
+    <link rel="stylesheet" href="static/css/swiper-3.4.2.min.css" />
+    <link rel="stylesheet" href="static/css/fonts/iconfont_2.css">
+    <link rel="stylesheet" href="static/css/fonts/iconfont_3.css">
+    <link rel="stylesheet" href="static/css/fonts/iconfont_4.css">
+    
+
+  </head>
+    <script>
+           {# var bodyElement = document.documentElement || document.body,
+           RC = {
+               w: 750,
+               h: 1206
+           }, //默认设计稿宽高
+           GC = {
+               w: document.documentElement.clientWidth || window.innerWidth || screen.width,
+               h: document.documentElement.clientHeight || window.innerHeight || screen.height
+           };
+       function setFontSize(){
+           var rightSize = parseFloat((RC.w / RC.h).toFixed(1)),
+               currentSize = parseFloat((GC.w / GC.h).toFixed(1)),
+               lastHTMLSize = 16, // 默认16是因为html默认字号是16px
+               html = document.getElementsByTagName("html")[0];
+        
+             if(rightSize > currentSize){  // 长屏
+                   lastHTMLSize = 16;
+              }else if(rightSize < currentSize){  //宽屏
+                  lastHTMLSize = (RC.h / GC.h * GC.w) / RC.w * 16;
+             }
+              html.style.fontSize = GC.w / lastHTMLSize + 'px';
+        
+       }
+
+         setFontSize(); #}
+    </script>
+  <body>
+
+    <div id="app"></div>
+    <script type="text/javascript">
+      var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : "http://");
+      document.write(unescape("%3Cspanid = 'cnzz_stat_icon_1263522092' % 3E % 3C / span % 3E % 3Cscript src = '" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1263522092%26show%3Dpic1' type='text / javascript'%3E%3C/script%3E"))
+    </script>
+    <script type="text/javascript" src="static/script/lib/aui-dialog.js"></script>
+    <script type="text/javascript" src="static/script/lib/aui-toast.js"></script>
+    <!-- <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=9bfe3d8b8882b7d3e4c23e43d38b18ba"></script>
+    <script src="//webapi.amap.com/ui/1.0/main.js"></script> -->
+     <script>
+        var u = navigator.userAgent;
+        console.log("使用的设备", u);
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios
+        var isWindows = u.indexOf("Windows") > -1;
+        var isScript = document.querySelector(".isScript")
+
+        if(!isScript){
+          if(isiOS) {
+            var scriptLabel = document.createElement("script")
+            scriptLabel.setAttribute("src", 'static/script/cordova/ios/cordova.js')
+            scriptLabel.setAttribute("class", 'isScript')
+            console.log(scriptLabel)
+          document.body.appendChild(scriptLabel)
+          }else if( isAndroid) {
+            var scriptLabel = document.createElement("script")
+            scriptLabel.setAttribute("src", 'static/script/cordova/android/cordova.js')
+            scriptLabel.setAttribute("class", 'isScript')
+            console.log("Android---", navigator.userAgent);
+            console.log(scriptLabel)
+            document.body.appendChild(scriptLabel)
+          }
+          else if (isWindows) {
+            //pc或者是windows，默认不作处理
+          } else {
+            //如果读不到系统标识，默认当做android处理
+              var scriptLabel = document.createElement("script")
+              scriptLabel.setAttribute("src", 'static/script/cordova/android/cordova.js')
+              scriptLabel.setAttribute("class", 'isScript')
+              console.log("else---", navigator.userAgent);
+              console.log(scriptLabel);
+              document.body.appendChild(scriptLabel)
+          }
+        }
+        Date.prototype.format = function(format)
+        {
+          var o = {
+          "M+" : this.getMonth()+1, //month
+          "d+" : this.getDate(),    //day
+          "h+" : this.getHours(),   //hour
+          "m+" : this.getMinutes(), //minute
+          "s+" : this.getSeconds(), //second
+          "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+          "S" : this.getMilliseconds() //millisecond
+          }
+          if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+          (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+          for(var k in o)if(new RegExp("("+ k +")").test(format))
+          format = format.replace(RegExp.$1,
+          RegExp.$1.length==1 ? o[k] :
+          ("00"+ o[k]).substr((""+ o[k]).length));
+          return format;
+        }
+     </script>
+<!--     <script>
+
+        accessLogin();
+
+                function accessLogin(){
+                    var url = window.location.href;
+                    console.log(url);
+
+                    var param = url.split('?')[1];
+                    if(!param)return;
+
+                    if(location.href.search(/actId/) != -1) {
+                       return
+                    }
+                    if(param.search(/&/) != -1) {
+                        console.log(1)
+                        var newParam = param.substr(param.search(/sessionId/), param.search(/&/))
+                        var key = newParam.split('=')[0];
+
+                        if(key != 'sessionId'){
+                        return ;
+                        }
+                        var value = newParam.split('=')[1];
+                        console.log('value', value);
+                        window.localStorage.setItem('sessionId', value);
+                        console.log('value', value);
+                        return
+                    }
+
+                    if(param.search(/#/) != -1){
+                        console.log(2)
+                        var newParam = param.substr(param.search(/sessionId/), param.search(/#/))
+                        var key = newParam.split('=')[0];
+
+                        if(key != 'sessionId'){
+                        return ;
+                        }
+
+                        var value = newParam.split('=')[1];
+                        console.log('value', value);
+                        window.localStorage.setItem('sessionId', value);
+                        console.log('value', value);
+                        return
+                    }
+
+                    if(param.search(/#/)== -1 && param.search(/&/) == -1){
+                        console.log(3)
+                        var key = param.split('=')[0];
+
+                        if(key != 'sessionId'){
+                        return ;
+                        }
+                        var value = param.split('=')[1];
+                        console.log('value', value);
+                        window.localStorage.setItem('sessionId', value);
+                        console.log('value', value);
+                        return
+                    }
+                }
+
+    </script> -->
+    <script>
+      function GetQueryString(name){
+       var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        if(name === 'sessionId'){
+          if(window.location.href.indexOf('sessionId') === -1){
+            if(localStorage.getItem('sessionId')){
+              console.log(1);
+              return localStorage.getItem('sessionId');
+            }
+            return null
+          }
+        }
+       // var r = window.location.search.substr(1).match(reg);
+        var r = window.location.href.split('?')[1].match(reg);
+       if(r!=null&&r!=undefined)return  unescape(r[2]);
+       return null;
+      }
+      var sessionId = GetQueryString("sessionId");
+      if(sessionId !=null && sessionId.toString().length>1){
+        localStorage.setItem('sessionId', sessionId);
+      }
+    </script>
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='visibility: hidden;' id='cnzz_stat_icon_1273909403'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1273909403%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+    <script>
+      document.querySelector('#cnzz_stat_icon_1273909403 a').style.display = "block"
+      document.querySelector('#cnzz_stat_icon_1273909403 a').style.width = "0"
+      document.querySelector('#cnzz_stat_icon_1273909403 a').style.height = "0"
+    </script>
+  </body>
+</html>

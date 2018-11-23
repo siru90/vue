@@ -1,0 +1,170 @@
+翌能git源码：git clone http://git.scn.weilian.cn/yn/yndev.git
+个人git账号：ru/123456789
+
+
+【运行环境】
+1）node装好后；
+2）选一处文件夹做父级文件夹（选的项目根目录路径）：cmd输入命令；
+3）下载依赖：npm install
+4）运行项目：npm run dev
+5）浏览器会自动打开http://localhost:8086呈现页面
+
+
+线上环境
+https://mall.scn.weilian.cn/static/YN/H5/index.html#/main/home
+
+
+预发布
+https://pre-mall.scn.weilian.cn/static/YN/H5/index.html#/main/home 
+后台地址： http://pre.scn.weilian.cn/static/index.html
+sessionId: c7338e1bdd724ec5b4efa2e41ec25321
+
+
+
+【测试环境】
+前端地址：https://test-mall.scn.weilian.cn/static/YN/H5/index.html#/main/profile
+后台管理：https://test.scn.weilian.cn/   ynadmin/123456
+sessionId: e9e9951014c64efb819fdd27b0052041
+
+
+【打包提交】
+teamViewer连接前端电脑：845028081/eam146
+打包操作：
+1)选择桌面2
+2)cmd 进入c/workspace/yndev，
+  git checkout -b test origin/test #切换分支到test
+  git pull
+  npm run build  #打包代码
+3）查看打包代码：c/workspace/yndev/dist/
+
+
+提交到测试环境/预发布环境：
+1）进入提交目录：C:\翌能master\h5config-rest-enterprise\src\main\resources\static\YN\H5
+2）把打包的代码，复制到上述目录，如果上述目录有内容，请先删除
+3）cmd 进入c/翌能master
+   git checkout -b development origin/development # 切换到测试分支:development  预发布分支:master
+   git pull
+   git add .
+   git commit -m ""
+   git push
+
+4)通知德邻发布
+
+
+
+-------翌能大客户商城-----------
+翌能BBC git源码：git clone http://git.scn.weilian.cn/yn/ynbcdev.git
+
+【测试环境】
+sessionId: 32b2ec3771974d5d9b799abae0a91164
+账号：spadmin/123456
+
+
+
+
+
+
+
+
+
+用vw不用rem。
+100vw = 375  1vw就是ip6宽度的百分之一
+以ip6为基准 即 375*667
+
+
+【vue一些知识】
+1）computed：计算属性将被混入到 Vue 实例中。所有getter和setter的this上下文自动地绑定为Vue实例。
+  computed是在HTML DOM加载后马上执行的，
+
+
+2）es6 扩展运算符(…) 
+定义：将一个数组转为用逗号分隔的参数序列
+可以用来函数调用时转换参数
+扩展运算符后面还可以放置表达式
+后接空数组，则无任何实际作用
+可将字符串转换成数组
+可将任何有迭代器的对象转换成数组
+
+
+3)理解vuex -- vue的状态管理模式
+Vuex mapGetters,mapActions
+https://www.cnblogs.com/yaowen/p/8927343.html
+
+
+import { mapGetters } from 'vuex'
+export default {
+  // ...
+  computed: {
+  // 使用对象展开运算符将 getter 混入 computed 对象中
+    ...mapGetters([
+      'doneTodosCount',
+      'anotherGetter',
+      // ...
+    ])
+  }
+}
+
+
+
+【一些不懂的vue知识】
+1)tabsChange
+	<wbxf :dataList="dataList" @tabsChange="getDataList"></wbxf>
+
+【vuex 中dispatch 和 commit 的用法和区别】
+dispatch：含有异步操作，例如向后台提交数据，写法： this.$store.dispatch('mutations方法名',值)
+commit：同步操作，写法：this.$store.commit('mutations方法名',值)
+
+
+
+【this.$router.push、replace、go的区别】
+1.this.$router.push()
+描述：跳转到不同的url，但这个方法回向history栈添加一个记录，点击后退会返回到上一个页面。
+
+2.this.$router.replace()
+描述：同样是跳转到指定的url，但是这个方法不会向history里面添加新的记录，点击返回，会跳转到上上一个页面。上一个记录是不存在的。
+
+3.this.$router.go(n)
+相对于当前页面向前或向后跳转多少个页面,类似 window.history.go(n)。n可为正数可为负数。正数返回上一个页面
+
+【vue data-v-xxx】
+现象：在Vue开发中，会遇到html被浏览器解析后，在标签中出现’data-v-xxxxx’标记，如下：
+	<div data-v-fcba8876 class="xxx"> aaa</div>
+这是在标记vue文件中css时使用scoped标记产生的，因为要保证各文件中的css不相互影响，给每个component都做了唯一的标记，所以每引入一个component就会出现一个新的'data-v-xxx'标记
+
+
+【Vue生命周期中mounted和created的区别】
+created:在模板渲染成html前调用，即通常初始化某些属性值，然后再渲染成视图。
+mounted:在模板渲染成html后调用，通常是初始化页面完成后，再对html的dom节点进行一些需要的操作。
+    其实两者比较好理解，通常created使用的次数多，而mounted通常是在一些插件的使用或者组件的使用中进行操作，比如插件chart.js的使用:?
+var ctx = document.getElementById(ID);通常会有这一步，而如果你写入组件中，你会发现在created中无法对chart进行一些初始化配置，一定要等这个html渲染完后才可以进行，那么mounted就是不二之选。
+
+
+
+
+
+【】
+请求banner数据接口
+http://test-mall.scn.weilian.cn/resourceLevel/resourceLevelListH5
+  enterpriseId: api.enterpriseId,
+  relPosition: 'HomePageBanner'
+
+ 
+https://test-mall.scn.weilian.cn/static/YN/H5/index.html#/wbxfWorkOrderDetail?maintenanceno=2018110985568&maintenanceid=1060711513435885568&isWbOrder=0
+isWbOrder=0 是预约单
+isWbOrder=1 是维保单
+maintenanceno 是工单编号  maintenanceno:item.reservationno
+maintenanceid：维保id号
+预约单会用到reservationno
+维保单会用到maintenanceid
+
+goodtype 0 正常商品 、1 虚拟商品，3组合商品
+
+
+得到预发布的sessionId
+https://pre-mall.scn.weilian.cn/user/login
+{
+	"mobile":"13134565433",
+	"password":"123456",
+	"enterpriseId":138,
+	"account":"13134565433"
+}

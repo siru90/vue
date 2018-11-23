@@ -1,0 +1,1 @@
+export const loginState = state => {  return state.loginState };
